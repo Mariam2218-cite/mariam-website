@@ -1,1 +1,538 @@
 # mariam-website
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Мариам | Бизнес-информатика</title>
+  <meta name="description" content="Личный сайт Мариам — студентки СПбГУ, изучающей бизнес-информатику.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --pink: #d98eae;
+      --dark-pink: #a95379;
+      --light-pink: #f9e5ee;
+      --cream: #fffaf4;
+      --text: #342b32;
+      --muted: #756a73;
+      --white: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 8%;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid #f3e5eb;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--dark-pink);
+      letter-spacing: -1px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--dark-pink);
+    }
+
+    .hero {
+      min-height: 490px;
+      padding: 100px 8% 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        radial-gradient(circle at 15% 20%, #ffffff 0, transparent 25%),
+        linear-gradient(135deg, #f8dce8, #fff1df);
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 17px;
+      margin-bottom: 24px;
+      background: rgba(255,255,255,.8);
+      color: var(--dark-pink);
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: .5px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 76px);
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 25px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto;
+      color: #594b55;
+      font-size: 18px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 13px 25px;
+      border-radius: 30px;
+      background: var(--dark-pink);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform .2s, background .2s;
+    }
+
+    .button:hover {
+      background: #87405f;
+      transform: translateY(-2px);
+    }
+
+    section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 82px 28px;
+    }
+
+    .section-label {
+      color: var(--dark-pink);
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(29px, 5vw, 42px);
+      line-height: 1.2;
+      margin: 12px 0 24px;
+      letter-spacing: -1px;
+    }
+
+    .intro {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .quote-card {
+      background: var(--light-pink);
+      padding: 35px;
+      border-radius: 25px;
+    }
+
+    .quote-card .symbol {
+      font-size: 40px;
+      color: var(--dark-pink);
+    }
+
+    .quote-card p {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .quote-card small {
+      display: block;
+      margin-top: 20px;
+      color: var(--muted);
+    }
+
+    .soft-section {
+      max-width: none;
+      background: #fff0f5;
+    }
+
+    .soft-inner {
+      max-width: 1024px;
+      margin: auto;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 35px;
+    }
+
+    .card {
+      padding: 27px;
+      background: white;
+      border: 1px solid #f3e6ec;
+      border-radius: 20px;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px #9b5e7412;
+    }
+
+    .card-icon {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      font-size: 19px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .study-list {
+      list-style: none;
+      margin-top: 28px;
+      display: grid;
+      gap: 15px;
+    }
+
+    .study-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+    }
+
+    .check {
+      display: inline-flex;
+      flex-shrink: 0;
+      justify-content: center;
+      align-items: center;
+      width: 27px;
+      height: 27px;
+      border-radius: 50%;
+      background: var(--light-pink);
+      color: var(--dark-pink);
+      font-weight: bold;
+    }
+
+    .future {
+      text-align: center;
+      background: linear-gradient(135deg, #f8dce8, #fff1df);
+      max-width: none;
+    }
+
+    .future-content {
+      max-width: 760px;
+      margin: auto;
+    }
+
+    .future p {
+      color: #594b55;
+      font-size: 17px;
+    }
+
+    footer {
+      padding: 28px 20px;
+      text-align: center;
+      background: white;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        padding: 15px 5%;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      .hero {
+        min-height: 420px;
+        padding: 75px 6%;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 60px 22px;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="logo">Mariam.</div>
+
+    <nav class="nav-links">
+      <a href="#about">Обо мне</a>
+      <a href="#direction">Направление</a>
+      <a href="#skills">Возможности</a>
+      <a href="#future">Мои цели</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">
+          СПбГУ · Экономический факультет
+        </span>
+
+        <h1>Привет, я Мариам!</h1>
+
+        <p>
+          Изучаю бизнес-информатику и открываю для себя мир,
+          в котором экономика встречается с технологиями,
+          а идеи превращаются в реальные решения.
+        </p>
+
+        <a class="button" href="#about">
+          Познакомиться со мной
+        </a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="about-grid">
+        <div>
+          <span class="section-label">Немного личного</span>
+          <h2>Обо мне</h2>
+
+          <p class="intro">
+            Мне 18 лет, я родилась и выросла в Санкт-Петербурге
+            и сейчас учусь в Санкт-Петербургском государственном
+            университете на экономическом факультете по направлению
+            «Бизнес-информатика».
+          </p>
+
+          <p class="intro" style="margin-top: 18px;">
+            Я люблю путешествовать, посещать музеи и театры,
+            узнавать новое и проводить время с близкими.
+            С детства занимаюсь танцами, поэтому в моей жизни
+            всегда было место творчеству, движению и самовыражению.
+            Мне интересно знакомиться с людьми, находить общий язык
+            с разными характерами и смотреть на мир с разных сторон.
+          </p>
+        </div>
+
+        <div class="quote-card">
+          <div class="symbol">“</div>
+          <p>
+            Мне нравится сочетать разные интересы и находить
+            необычные решения там, где на первый взгляд
+            всё кажется привычным.
+          </p>
+          <small>Мой взгляд на жизнь</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft-section" id="direction">
+      <div class="soft-inner">
+        <span class="section-label">Моя специальность</span>
+        <h2>Что такое бизнес-информатика?</h2>
+
+        <p class="intro">
+          Бизнес-информатика — это направление на пересечении
+          экономики, менеджмента и информационных технологий.
+          Оно помогает понять, как работают компании и как
+          цифровые решения могут улучшать их деятельность.
+        </p>
+
+        <p class="intro" style="margin-top: 18px;">
+          Студенты изучают бизнес-процессы, анализ данных,
+          информационные системы и способы автоматизации работы.
+          Главная идея направления — не просто использовать
+          технологии, а понимать, какие задачи бизнеса они
+          помогают решать и какую пользу приносят компании.
+        </p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">📊</div>
+            <h3>Анализ данных</h3>
+            <p>
+              Работа с информацией, поиск закономерностей
+              и использование данных для обоснованных
+              управленческих решений.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">💻</div>
+            <h3>IT и технологии</h3>
+            <p>
+              Изучение цифровых инструментов, информационных
+              систем и автоматизации бизнес-процессов.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">💡</div>
+            <h3>Экономика и бизнес</h3>
+            <p>
+              Понимание того, как устроены компании,
+              как организовать их работу и находить
+              решения для развития.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <span class="section-label">Теория и практика</span>
+      <h2>Где пригодится это направление?</h2>
+
+      <p class="intro">
+        Бизнес-информатика открывает разные пути развития.
+        Она позволяет соединять знания об экономике с пониманием
+        технологий и потребностей людей.
+      </p>
+
+      <ul class="study-list">
+        <li>
+          <span class="check">✓</span>
+          <span>
+            <strong>Бизнес-аналитика.</strong>
+            Исследование данных и помощь компаниям
+            в принятии решений.
+          </span>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <span>
+            <strong>Управление IT-проектами.</strong>
+            Организация работы команды и контроль
+            реализации цифровых проектов.
+          </span>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <span>
+            <strong>Цифровая трансформация.</strong>
+            Поиск способов сделать процессы компании
+            удобнее и эффективнее с помощью технологий.
+          </span>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <span>
+            <strong>Консалтинг.</strong>
+            Анализ задач бизнеса и разработка
+            рекомендаций по их решению.
+          </span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="future" id="future">
+      <div class="future-content">
+        <span class="section-label">Всё только начинается</span>
+        <h2>Мои цели и будущее</h2>
+
+        <p>
+          Сейчас я знакомлюсь с новой для себя профессиональной
+          областью и постепенно определяю, в каком направлении
+          хочу развиваться. Мне интересно понять, как технологии
+          меняют привычный мир и как можно использовать их
+          не только для решения задач, но и для создания
+          чего-то нового.
+        </p>
+
+        <p style="margin-top: 18px;">
+          Я хочу получать знания, пробовать себя в проектах,
+          развивать аналитическое мышление и учиться превращать
+          идеи в конкретные результаты. Для меня университет —
+          это не только учёба, но и возможность лучше понять себя
+          и свои будущие возможности.
+        </p>
+
+        <a class="button" href="#about">Вернуться в начало ↑</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Мариам · Личный сайт о себе и бизнес-информатике</p>
+    <p>Создано с интересом к технологиям и новым идеям ♡</p>
+  </footer>
+
+</body>
+</html>
